@@ -14,10 +14,10 @@ def authenticate_account(db: Session, aadhar: str, password: str) -> Account:
     try:
         valid = verify_password(password, acct.password)
     except UnknownHashError:
-        # legacy plaintext fallback
+        
         if acct.password == password:
             valid = True
-            # upgrade to bcrypt
+            
             acct.password = hash_password(password)
             db.commit()
             db.refresh(acct)

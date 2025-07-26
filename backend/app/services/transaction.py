@@ -1,4 +1,4 @@
-# services/transaction.py
+
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 from app.models.account import Account
@@ -52,7 +52,7 @@ def transfer(
     if not receiver:
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Receiver not found")
 
-    # perform the transfer
+    
     sender.balance   -= amount
     receiver.balance += amount
 

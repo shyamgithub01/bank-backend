@@ -1,4 +1,4 @@
-# schemas/transaction.py
+
 from pydantic import BaseModel, Field, ConfigDict
 
 class DepositRequest(BaseModel):

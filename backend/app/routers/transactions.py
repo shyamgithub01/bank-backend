@@ -25,7 +25,7 @@ def deposit_money(
     req: DepositRequest,
     db: Session = Depends(get_db)
 ):
-    # 1. Fetch the account (so we can inspect current balance)
+    
     acct = db.query(Account).filter_by(aadhar_card_number=req.aadhar_card_number).first()
     if not acct:
         raise HTTPException(
@@ -33,14 +33,14 @@ def deposit_money(
             detail="Account not found"
         )
 
-    # 2. Pre‑check: will this push them over the ₹250 000 cap?
+    
     if acct.balance + req.amount > MAX_BALANCE:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=f"Deposit would exceed max balance of ₹{MAX_BALANCE:,}"
         )
 
-    # 3. Delegate to your existing service (which also re‑validates amount ≤ ₹200 000, auth, etc.)
+    
     updated_acct = deposit(
         db,
         req.aadhar_card_number,

@@ -12,7 +12,7 @@ class AccountCreate(BaseModel):
 
 
 class AccountRead(BaseModel):
-    id: int  # database field name is likely 'id'
+    id: int  
     full_name: str
     email: EmailStr
     age: int

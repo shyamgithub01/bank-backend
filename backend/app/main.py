@@ -17,7 +17,7 @@ async def health_check():
 
 app = FastAPI(title="BankX API")
 
-# 1) CORS setup – allow your Vite front‑end origin:
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  

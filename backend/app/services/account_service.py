@@ -26,7 +26,7 @@ def create_account(db: Session, data: AccountCreate):
         age                  = data.age,
         aadhar_card_number   = data.aadhar_card_number,
         mobile_number        = data.mobile_number,
-        password             = data.password,         # plaintext
+        password             = data.password,        
         account_type         = data.account_type,
         account_number       = generate_account_number(db),
     )
